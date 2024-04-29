@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApplication1.Models.Visiteur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des visiteurs</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nouveau</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Nom")
+            </th>
+            <th>
+                @Html.Label("Prénom")
+            </th>
+            <th>
+                @Html.Label("Adresse")
+            </th>
+            <th>
+                @Html.Label("Code Postal")
+            </th>
+            <th>
+                @Html.Label("Ville")
+            </th>
+            <th>
+                @Html.Label("Date embauche")
+            </th>
+            <th>
+                @Html.Label("Navigation")
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.SecCodeNavigation)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisNom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisPrenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisAdresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisCp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisVille)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisDateembauche)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LabCodeNavigation.LabNom)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.SecCodeNavigation.SecCode)
+            </td> *@
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.VisMatricule" class=" btn btn-primary">Editer</a> |
+                    <a asp-action="Details" asp-route-id="@item.VisMatricule" class=" btn btn-info">Détails</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VisMatricule" class=" btn btn-danger">Suppression</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
